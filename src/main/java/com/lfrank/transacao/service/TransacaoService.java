@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 
 @Service
 @RequiredArgsConstructor
-public class TransferenciaService {
+public class TransacaoService {
 
     private final UsuarioService usuarioService;
     private final AutorizacaoService autorizacaoService;
