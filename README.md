@@ -1,7 +1,17 @@
 # Projeto Transação
 
 ## Descrição
-Este é um projeto de demonstração Spring Boot (`transacao`) que serve como uma aplicação web. Ele utiliza Spring Data JPA para interação com um banco de dados PostgreSQL e Spring Cloud OpenFeign para comunicação com outros serviços. O projeto é empacotado como um arquivo WAR e pode ser executado localmente ou em um contêiner Docker.
+Este projeto é uma implementação simplificada de uma plataforma de pagamentos, permitindo depósitos e transferências entre usuários e lojistas. Foi desenvolvido como parte de um desafio técnico para a vaga de Desenvolvedor Backend Júnior. 
+Repositório original do desafio: (https://github.com/PicPay/picpay-desafio-backend)
+
+## ⚙️ Funcionalidades Implementadas
+- Cadastro de usuários com validação de CPF, CNPJ e e-mail únicos.
+- Criação de carteiras digitais associadas a cada usuário.
+- Envio de dinheiro entre usuários e para lojistas, com validação de saldo.
+- Integração com serviço autorizador externo para validação de transações.
+- Notificação de transações via serviço externo.
+- Tratamento de erros e exceções.
+- Documentação da API com Swagger.
 
 ## Tecnologias Utilizadas
 *   **Java 21**
@@ -9,14 +19,12 @@ Este é um projeto de demonstração Spring Boot (`transacao`) que serve como um
     *   `spring-boot-starter-web`: Para construção de APIs RESTful.
     *   `spring-boot-starter-data-jpa`: Para persistência de dados com JPA.
     *   `spring-boot-starter-tomcat`: Servidor web embarcado (empacotado como WAR).
-    *   `spring-boot-starter-test`: Para testes.
 *   **Spring Cloud OpenFeign**: Para clientes REST declarativos.
 *   **PostgreSQL**: Driver JDBC para conexão com banco de dados PostgreSQL.
 *   **Lombok**: Biblioteca para reduzir código boilerplate.
 *   **Maven**: Ferramenta de automação de build e gerenciamento de dependências.
 *   **Docker**: Para conteinerização da aplicação.
 
-## Como Começar
 
 ### Pré-requisitos
 *   **JDK 21**
@@ -24,50 +32,26 @@ Este é um projeto de demonstração Spring Boot (`transacao`) que serve como um
 *   **Docker** e **Docker Compose** (opcional, para execução em contêineres)
 *   Um servidor **PostgreSQL** em execução e acessível.
 
-### Construção do Projeto
-Para construir o projeto, navegue até o diretório raiz (`C:/Programacao/Projetos/transacao`) e execute o seguinte comando Maven:
+## 📦 Como Executar
+1. Clone este repositório:
 ```bash
-mvn clean install
-```
-Este comando irá compilar o código, executar os testes e empacotar a aplicação em um arquivo `.war` no diretório `target/`.
-
-### Execução Local
-
-#### Configuração do Banco de Dados
-Certifique-se de que seu banco de dados PostgreSQL esteja configurado e que as credenciais de conexão (geralmente em `src/main/resources/application.properties` ou `application.yml`) estejam corretas.
-
-#### Executando a Aplicação
-Após a construção, você pode executar a aplicação diretamente usando o Maven ou o arquivo WAR gerado:
-
-**Via Maven:**
-```bash
-mvn spring-boot:run
+git clone https://github.com/LucasFrank99/Desafio_Junior
 ```
 
-**Via arquivo WAR:**
+2. Navegue até o diretório do projeto:
 ```bash
-java -jar target/transacao-0.0.1-SNAPSHOT.war
+cd Desafio_Junior
 ```
 
-### Execução com Docker
-O projeto inclui um `Dockerfile` e um `docker-compose.yml` para facilitar a conteinerização.
-
-#### Construindo a Imagem Docker
-No diretório raiz do projeto, execute:
-```bash
-docker build -t transacao-app .
-```
-
-#### Executando com Docker Compose
-Se o `docker-compose.yml` estiver configurado para orquestrar o banco de dados e a aplicação, você pode iniciar tudo com:
+3. Inicie o banco de dados com Docker Compose:
 ```bash
 docker-compose up
 ```
-Alternativamente, você pode executar a imagem Docker diretamente:
-```bash
-docker run -p 8080:8080 transacao-app
-```
-(A porta `8080` é a porta padrão do Spring Boot, mas pode ser configurada de forma diferente no projeto.)
 
-## Endpoints da API
-Esta aplicação expõe endpoints RESTful. Para detalhes específicos sobre os endpoints disponíveis (como `/api/transacoes`, `/api/usuarios`, etc.), é necessário consultar o código-fonte na pasta `src/main/java` e a documentação gerada (se houver).
+4. Execute a aplicação Spring Boot:
+```bash
+./mvnw spring-boot:run
+```
+
+## 📚 Documentação da API
+A API RESTful está documentada com Swagger. Para acessá-la, inicie a aplicação e navegue até [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html).
