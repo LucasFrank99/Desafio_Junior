@@ -4,6 +4,6 @@ LABEL authors="lucas"
 
 WORKDIR /app
 
-COPY target/agendamento-notificacao-api-0.0.1-SNAPSHOT.jar app.jar
+COPY target/transacao-0.0.1-SNAPSHOT.war app.war
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-war", "app.war"]
